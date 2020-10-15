@@ -62,4 +62,30 @@ export class ExecCdk {
     return stdout;
   }
 
+  public async deploy(stackName: string): Promise<string> {
+
+    let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
+    if (this.appCommand) {
+      command = command + ` --no-color deploy --require-approval never --app ${this.appCommand} ${stackName}`;
+    } else {
+      command = command + ` --no-color deploy --require-approval never ${stackName}` ;
+    }
+    const { stdout, stderr } = await exec(command);
+    console.log(`std error: `, stderr);
+    return stdout;
+  }
+
+  public async destroy(stackName: string): Promise<string> {
+
+    let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
+    if (this.appCommand) {
+      command = command + ` --no-color destroy -f --app ${this.appCommand} ${stackName}`;
+    } else {
+      command = command + ` --no-color destroy -f ${stackName}` ;
+    }
+    const { stdout, stderr } = await exec(command);
+    console.log(`std error: `, stderr);
+    return stdout;
+  }
+
 }
