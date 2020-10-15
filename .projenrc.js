@@ -18,6 +18,9 @@ const project = new TypeScriptAppProject({
     "@aws-cdk/core": "^1.63.0",
     "@aws-cdk/aws-dynamodb": "^1.63.0",
   },
+  gitignore: [
+    'cdk.out/',
+  ],
 });
 
 project.synth();

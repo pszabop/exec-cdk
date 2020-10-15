@@ -44,8 +44,8 @@ export class ExecCdk {
   }
 
   public async synth(stackName: string, options?: {
-      asJson?: boolean
-    }): Promise<string> {
+    asJson?: boolean;
+  }): Promise<string> {
 
     let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
     let jsonOption = '';
@@ -71,7 +71,7 @@ export class ExecCdk {
       command = command + ` --no-color deploy --require-approval never ${stackName}` ;
     }
     const { stdout, stderr } = await exec(command);
-    console.log(`std error: `, stderr);
+    console.log('std error: ', stderr);
     return stdout;
   }
 
@@ -84,7 +84,7 @@ export class ExecCdk {
       command = command + ` --no-color destroy -f ${stackName}` ;
     }
     const { stdout, stderr } = await exec(command);
-    console.log(`std error: `, stderr);
+    console.log('std error: ', stderr);
     return stdout;
   }
 
