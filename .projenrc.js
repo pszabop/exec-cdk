@@ -22,6 +22,9 @@ const project = new TypeScriptAppProject({
   gitignore: [
     'cdk.out/',
   ],
+  npmignore: [
+    'cdk.out/',
+  ],
 });
 
 // had to reverse engineer this from a diff.
