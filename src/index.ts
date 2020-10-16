@@ -4,7 +4,7 @@ import * as CommandExists from 'command-exists';
 
 const exec = util.promisify(child.exec);
 
-export class ExecCdk {
+export class AwsCdkExec {
 
   cdkLocation?: string;
   appCommand?: string; // if not using cdk.json

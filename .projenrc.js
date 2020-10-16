@@ -1,7 +1,7 @@
 const { Eslint, TypeScriptAppProject } = require('projen');
 
 const project = new TypeScriptAppProject({
-  name: "exec-cdk",
+  name: "aws-cdk-exec",
   authorName: "Paul Szabo",
   authorAddress: "paulszabopnw@gmail.com",
   repository: "https://github.com/pszabop/exec-cdk",

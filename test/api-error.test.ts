@@ -1,7 +1,7 @@
-import { ExecCdk } from '../src';
+import { AwsCdkExec } from '../src';
 
 test('cdk list with missing test app', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '""' });
+  const cdkApp = new AwsCdkExec({ appCommand: '""' });
 
   let stackList;
   try {
@@ -17,7 +17,7 @@ test('cdk list with missing test app', async () => {
 }, 60000);
 
 test('cdk synth yaml with synthesis error', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/badtestapp.ts"' });
+  const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/badtestapp.ts"' });
 
   let synthResult;
   try {

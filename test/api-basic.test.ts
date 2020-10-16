@@ -1,7 +1,7 @@
-import { ExecCdk } from '../src';
+import { AwsCdkExec } from '../src';
 
 test('cdk list', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
+  const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/testapp.ts"' });
 
   const stackList = await cdkApp.list();
   expect(stackList.length).toBe(2);
@@ -12,7 +12,7 @@ test('cdk list', async () => {
 }, 60000);
 
 test('cdk synth yaml', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
+  const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/testapp.ts"' });
 
   const synthResult = await cdkApp.synth('dbStack');
   expect(synthResult.output.split(':')[0]).toBe('Resources'); // XXX test with a YAML parser
@@ -21,7 +21,7 @@ test('cdk synth yaml', async () => {
 }, 60000);
 
 test('cdk synth json', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
+  const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/testapp.ts"' });
 
   const synthResult = await cdkApp.synth('dbStack', { asJson: true });
 
@@ -33,7 +33,7 @@ test('cdk synth json', async () => {
 
 
 test('cdk deploy and destroy a single stack', async () => {
-  const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
+  const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/testapp.ts"' });
 
   const deployResult = await cdkApp.deploy('dbStack');
   console.log(deployResult);
