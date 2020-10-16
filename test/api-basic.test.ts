@@ -9,7 +9,7 @@ test('cdk list', async () => {
   expect(stackList[1]).toBe('dbStack2');
 
 
-}, 20000);
+}, 60000);
 
 test('cdk synth yaml', async () => {
   const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
@@ -18,7 +18,7 @@ test('cdk synth yaml', async () => {
   expect(synthResult.output.split(':')[0]).toBe('Resources'); // XXX test with a YAML parser
 
 
-}, 20000);
+}, 60000);
 
 test('cdk synth json', async () => {
   const cdkApp = new ExecCdk({ appCommand: '"npx ts-node test/testapp.ts"' });
@@ -29,7 +29,7 @@ test('cdk synth json', async () => {
   expect(synthObj).toHaveProperty('Resources');
 
 
-}, 20000);
+}, 60000);
 
 
 test('cdk deploy and destroy a single stack', async () => {
@@ -39,7 +39,7 @@ test('cdk deploy and destroy a single stack', async () => {
   console.log(deployResult);
   expect(deployResult.stackArn.search('arn:aws:cloudformation')).toBeGreaterThanOrEqual(0); // XXX put a valid ARN check in
 
-  // 
+  //
   // make sure deploy is idempotent
   //
   const deployResultSecond = await cdkApp.deploy('dbStack');
@@ -47,19 +47,16 @@ test('cdk deploy and destroy a single stack', async () => {
   expect(deployResultSecond.stackArn.search('arn:aws:cloudformation')).toBeGreaterThanOrEqual(0); // XXX put a valid ARN check in
 
 
-
-
   const destroyResult = await cdkApp.destroy('dbStack');
   console.log(destroyResult);
   expect(destroyResult.destroyed).toBe(true);
 
-  // 
+  //
   // make sure destroy is idempotent
   //
   const destroyResultSecondTime = await cdkApp.destroy('dbStack');
   console.log(destroyResultSecondTime);
   expect(destroyResultSecondTime.destroyed).toBe(true);
-
 
 
 }, 3000000 /* deploy and destroy can take a very very long time */ );
