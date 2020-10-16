@@ -36,7 +36,8 @@
     "*.d.ts",
     "node_modules/",
     "*.generated.ts",
-    "coverage"
+    "coverage",
+    "test/badtestapp.ts"
   ],
   "rules": {
     "@typescript-eslint/no-require-imports": [

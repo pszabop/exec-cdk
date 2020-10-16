@@ -16,7 +16,7 @@
     "compile": "tsc",
     "watch": "tsc -w",
     "build": "yarn run test && yarn run compile",
-    "test": "rm -fr lib/ && jest --passWithNoTests --updateSnapshot && yarn run eslint",
+    "test": "rm -fr lib/ && jest --passWithNoTests --updateSnapshot && yarn run eslint && yarn run eslint",
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
     "eslint": "eslint --ext .ts --fix src test"

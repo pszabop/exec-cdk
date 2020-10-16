@@ -1,4 +1,4 @@
-const { TypeScriptAppProject } = require('projen');
+const { Eslint, TypeScriptAppProject } = require('projen');
 
 const project = new TypeScriptAppProject({
   name: "exec-cdk",
@@ -22,5 +22,9 @@ const project = new TypeScriptAppProject({
     'cdk.out/',
   ],
 });
+
+// had to reverse engineer this from a diff.
+new Eslint(project, { dirs: ['src', 'test'], tsconfigPath: './tsconfig.jest.json'}).addIgnorePattern('test/badtestapp.ts');
+
 
 project.synth();

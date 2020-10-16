@@ -53,3 +53,4 @@ cdk.out/
 !/tsconfig.jest.json
 !/test
 !/.eslintrc.json
+!/.eslintrc.json

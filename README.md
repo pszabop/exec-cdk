@@ -1,4 +1,4 @@
-# exec-cdk
+# aws-cdk-exec
 Provides a TypeScript API to the CDK CLI, allowing you to programmatically synthesize, deploy, and destory CDK apps without
 having to worry about the idiosyncrasies of the CDK CLI.
 
@@ -6,7 +6,7 @@ having to worry about the idiosyncrasies of the CDK CLI.
 ### Basic usage
 This for illustration purposes, typically you should not hard code a stack name
 
-        import { ExecCdk } from 'aws-cdk-exec';
+        import { ExecCdk } from 'g';
 
         // illustration purposes only
         const stackName = 'myStack');
@@ -41,6 +41,13 @@ in the reverse order of deployment, so that dependencies don't block destruction
           return await cdkApp.destroy(el, { asJson: true });
         }));
 
+### Error handling
+`aws-cdk-exec` passes any errors through as `child_process.exec` pattern thrown errors, so the client is expected
+to try/catch errors if (rarely) needed.
+
+Typically, CDK is idempotent so there's no need to try/catch errors in a detailed manner, just exit your
+program, fix the problem, and run the program start to finish, and CDK will catch up where it left off.  This 
+makes your code much simpler.  Idempotence good!  Catch bad!
 
 
 # Testing and Development

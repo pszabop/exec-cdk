@@ -13,6 +13,7 @@ dist
 /coverage
 /test
 /.eslintrc.json
+/.eslintrc.json
 !/lib
 !/lib/**/*.js
 !/lib/**/*.d.ts
