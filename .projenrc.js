@@ -5,9 +5,10 @@ const project = new TypeScriptAppProject({
   authorName: "Paul Szabo",
   authorAddress: "paulszabopnw@gmail.com",
   repository: "https://github.com/pszabop/exec-cdk",
+  entrypoint: "lib/index.js",     // XXX this shoulld be the default but it is not
   keywords: [
     "cdk",
-    "vpc",
+    "exec",
   ],
   dependencies: {
     "command-exists": "^1.2.9",

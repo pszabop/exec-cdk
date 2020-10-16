@@ -9,9 +9,11 @@ export class AwsCdkExec {
   cdkLocation?: string;
   appCommand?: string; // if not using cdk.json
 
-  constructor(options: {appCommand?: string}) {
+  constructor(options?: {appCommand?: string}) {
 
-    this.appCommand = options.appCommand;
+    if (options) {
+      this.appCommand = options.appCommand;
+    }
 
     // find location of cdk
     const exists = CommandExists.sync('cdk');
