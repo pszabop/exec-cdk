@@ -6,7 +6,7 @@ having to worry about the idiosyncrasies of the CDK CLI.
 ### Basic usage
 This for illustration purposes, typically you should not hard code a stack name
 
-        import { ExecCdk } from 'g';
+        import { AwsCdkExec } from 'aws-cdk-exec';
 
         // illustration purposes only
         const stackName = 'myStack');
@@ -69,7 +69,7 @@ All tests are Jest unit tests, and run in the standard `projen` manner:
 
         `yarn run test`
         
-# Release
+# Release / Publish
 See `projen` project for details... oh wait they don't have that documented yet.
 
 For now
