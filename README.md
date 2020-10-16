@@ -1,5 +1,5 @@
 # aws-cdk-exec
-Provides a TypeScript API to the CDK CLI, allowing you to programmatically synthesize, deploy, and destory CDK apps without
+Provides a TypeScript API to the CDK CLI, allowing you to programmatically synthesize, deploy, and destroy CDK apps without
 having to worry about the idiosyncrasies of the CDK CLI.
 
 ## Usage
@@ -55,24 +55,24 @@ makes your code much simpler.  Idempotence good!  Catch bad!
 ### Docker
 A convenient `docker-compose.yml` has been provided, for interactive testing/development:
 
-    `docker-compose run code /bin/bash`
+    docker-compose run code /bin/bash
 
 ### Project Environment
 [projen]() is used to manage this packages files.  Instead of modifying e.g. `package.jason`, you instead edit 
 `.projen.js` and then run:
 
-        `yarn run projen`
+    yarn run projen
 
 
 ## Testing
 All tests are Jest unit tests, and run in the standard `projen` manner:
 
-        `yarn run test`
+    yarn run test
         
 # Release / Publish
 See `projen` project for details... oh wait they don't have that documented yet.
 
 For now
 
-        `yarn run build`
+        yarn run build
         npm publish
