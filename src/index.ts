@@ -20,7 +20,7 @@ export class ExecCdk {
       this.cdkLocation = undefined;
     } else {
       // the only reasonable location left
-      this.cdkLocation = 'node_modules/.bin';
+      this.cdkLocation = 'node_modules/.bin/';
     }
   }
 
@@ -45,7 +45,11 @@ export class ExecCdk {
 
   public async synth(stackName: string, options?: {
     asJson?: boolean;
-  }): Promise<string> {
+  }): Promise<{
+      output: string;
+      stdout: string;
+      stderr: string;
+    }> {
 
     let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
     let jsonOption = '';
@@ -58,11 +62,18 @@ export class ExecCdk {
       command = command + ` --no-color ${jsonOption} synth ${stackName}` ;
     }
     const { stdout, stderr } = await exec(command);
-    console.log(stderr);
-    return stdout;
+    return {
+      output: stdout,
+      stdout: stdout,
+      stderr: stderr,
+    };
   }
 
-  public async deploy(stackName: string): Promise<string> {
+  public async deploy(stackName: string): Promise<{
+    stackArn: string;
+    stdout: string;
+    stderr: string;
+  }> {
 
     let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
     if (this.appCommand) {
@@ -71,11 +82,18 @@ export class ExecCdk {
       command = command + ` --no-color deploy --require-approval never ${stackName}` ;
     }
     const { stdout, stderr } = await exec(command);
-    console.log('std error: ', stderr);
-    return stdout;
+    return {
+      stackArn: stdout,
+      stdout: stdout,
+      stderr: stderr,
+    };
   }
 
-  public async destroy(stackName: string): Promise<string> {
+  public async destroy(stackName: string): Promise<{
+    destroyed: boolean;
+    stdout: string;
+    stderr: string;
+  }> {
 
     let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
     if (this.appCommand) {
@@ -85,7 +103,12 @@ export class ExecCdk {
     }
     const { stdout, stderr } = await exec(command);
     console.log('std error: ', stderr);
-    return stdout;
+    const destroyed = stderr.search('destroyed') >= 0;
+    return {
+      destroyed: destroyed,
+      stdout: stdout,
+      stderr: stderr,
+    };
   }
 
 }
