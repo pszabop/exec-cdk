@@ -4,9 +4,9 @@ test('cdk list', async () => {
   const cdkApp = new AwsCdkExec({ appCommand: '"npx ts-node test/testapp.ts"' });
 
   const stackList = await cdkApp.list();
-  expect(stackList.length).toBe(2);
-  expect(stackList[0]).toBe('dbStack'); // XXX unsure about order
-  expect(stackList[1]).toBe('dbStack2');
+  expect(stackList.list.length).toBe(2);
+  expect(stackList.list[0]).toBe('dbStack'); // XXX unsure about order
+  expect(stackList.list[1]).toBe('dbStack2');
 
 
 }, 60000);

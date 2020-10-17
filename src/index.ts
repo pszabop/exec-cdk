@@ -31,7 +31,11 @@ export class AwsCdkExec {
     return stdout;
   }
 
-  public async list(): Promise<string []> {
+  public async list(): Promise<{
+    list: string [];
+    stdout: string;
+    stderr: string;
+  }> {
     let command = this.cdkLocation? this.cdkLocation + 'cdk' : 'cdk';
     if (this.appCommand) {
       command = command + ` --no-color list --app ${this.appCommand}`;
@@ -39,10 +43,13 @@ export class AwsCdkExec {
       command = command + ' --no-color list' ;
     }
     const { stdout, stderr } = await exec(command);
-    console.log(stderr);
     let stackList = stdout.split('\n');
     stackList.pop(); // last line is always empty
-    return stackList;
+    return {
+      list: stackList,
+      stdout: stdout,
+      stderr: stderr,
+    };
   }
 
   public async synth(stackName: string, options?: {
