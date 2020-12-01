@@ -920,9 +920,9 @@
   integrity sha512-KPcKqKm5UKDkaYPTuXSx8wEP7vE9GnuaXIZKijwRYcePpZFDVuy2a57LarFKiORbHOuTOOwYzxVxcUzsh2P2Pw==
 
 "@types/node@^10.17.0":
-  version "10.17.39"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.39.tgz#ce1122758d0608de8303667cebf171f44192629b"
-  integrity sha512-dJLCxrpQmgyxYGcl0Ae9MTsQgI22qHHcGFj/8VKu7McJA5zQpnuGjoksnxbo1JxSjW/Nahnl13W8MYZf01CZHA==
+  version "10.17.48"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.17.48.tgz#726e7f25d00bf58d79c8f00dd586dd9a10d06a4f"
+  integrity sha512-Agl6xbYP6FOMDeAsr3QVZ+g7Yzg0uhPHWx0j5g4LFdUBHVtqtU+gH660k/lCEe506jJLOGbEzsnqPDTZGJQLag==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
